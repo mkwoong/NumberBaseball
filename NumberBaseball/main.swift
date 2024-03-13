@@ -38,6 +38,13 @@ class BaseballGame {
             return start()
         }
         
+        for index in input {
+            if input.contains(index) {
+                print("중복된 숫자를 입력할 수 없습니다")
+            }
+            return start()
+        }
+        
         
     }
 }
