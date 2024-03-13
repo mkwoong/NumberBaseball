@@ -22,29 +22,39 @@ class BaseballGame {
     }
     
     func start() {
-        var s_count = 0
-        var b_count = 0
         let answer = makeAnswer()
-        print("숫자를 입력하세요")
-        let input = readLine()!.map { Int(String($0))! }
-
-        if input.count != 3 {
-            print("3자리 수를 입력하세요")
-            return start()
-        }
         
-        if input.contains(0) {
-            print("0을 포함할 수 없습니다")
-            return start()
-        }
-        
-        for index in input {
-            if input.contains(index) {
-                print("중복된 숫자를 입력할 수 없습니다")
+        while true{
+            var s_count = 0
+            var b_count = 0
+            
+            
+            print("숫자를 입력하세요")
+            let input = readLine()!.map { Int(String($0))! }
+            
+            if input.count != 3 {
+                print("3자릿수를 입력해주세요")
+                continue
             }
-            return start()
+            
+            if input.contains(0){
+                print("0을 포함할 수 없습니다")
+                continue
+            }
+
+            for index in 0...2 {
+                if input[index] == answer[index] {
+                    s_count += 1
+                } else if answer.contains(input[index]){
+                    b_count += 1
+                }
+            }
+            print("\(s_count)스트라이크 \(b_count)볼")
+            
+            if s_count == 3 {
+                print("정답입니다")
+                break
+            }
         }
-        
-        
     }
 }
