@@ -32,28 +32,35 @@ class BaseballGame {
             var b_count = 0
             
             print("숫자를 입력하세요")
-            let input = readLine()!.map { Int(String($0))! }
+            let input = readLine()!
+            var numArray: [Int] = []
+            for s in input {
+                guard let num = Int(String(s)) else{
+                    print("잘못된 입력값입니다")
+                    break
+                }
+                numArray.append(num)
+            }
             
-            if input.count != 3 {
+            if numArray.count != 3 {
                 print("3자릿수를 입력해주세요")
                 continue
             }
             
-            if input[0] == 0 {
+            if numArray[0] == 0 {
                 print("0은 처음에 올 수 없습니다")
                 continue
             }
             
-            if input[0] == input[1] || input[0] == input[2] || input[1] == input[2] {
+            if numArray[0] == numArray[1] || numArray[0] == numArray[2] || numArray[1] == numArray[2] {
                 print("숫자가 중복되었습니다")
                 continue
             }
             
-        
             for index in 0...2 {
-                if input[index] == answer[index] {
+                if numArray[index] == answer[index] {
                     s_count += 1
-                } else if answer.contains(input[index]){
+                } else if answer.contains(numArray[index]){
                     b_count += 1
                 }
             }
