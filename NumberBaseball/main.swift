@@ -14,10 +14,13 @@ class BaseballGame {
         var numbers: Set<Int> = []
         var answerNumber: [Int] = []
         while numbers.count < 3 {
-            let num = Int.random(in: 1...9)
+            let num = Int.random(in: 0...9)
             numbers.insert(num)
+            answerNumber = Array(numbers)
+            if answerNumber.first == 0 {
+                continue
+            }
         }
-        answerNumber = Array(numbers)
         return answerNumber
     }
     
@@ -28,7 +31,6 @@ class BaseballGame {
             var s_count = 0
             var b_count = 0
             
-            
             print("숫자를 입력하세요")
             let input = readLine()!.map { Int(String($0))! }
             
@@ -37,11 +39,12 @@ class BaseballGame {
                 continue
             }
             
-            if input.contains(0){
-                print("0을 포함할 수 없습니다")
+            if input[0] == 0 {
+                print("0은 처음에 올 수 없습니다")
                 continue
             }
-
+            
+        
             for index in 0...2 {
                 if input[index] == answer[index] {
                     s_count += 1
