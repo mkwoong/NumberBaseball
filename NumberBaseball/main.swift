@@ -25,6 +25,26 @@ class BaseballGame {
     }
     
     func start() {
+            print("환영합니다! 원하시는 번호를 입력해주세요. \n 1. 게임시작하기   2. 게임 기록보기   3. 종료하기")
+            
+            let key = readLine()!
+            
+            switch key {
+            case "1":
+                print("< 게임을 시작합니다 >")
+                break
+            case "2":
+                print("< 게임 기록 보기 >")
+                break
+            case "3":
+                print("< 게임을 종료합니다 >")
+                break
+            default:
+                print("잘못된 입력값입니다")
+                start()
+            }
+        
+
         let answer = makeAnswer()
         
         while true{
@@ -46,7 +66,7 @@ class BaseballGame {
                 print("3자릿수를 입력해주세요")
                 continue
             }
-            
+
             if numArray[0] == 0 {
                 print("0은 처음에 올 수 없습니다")
                 continue
@@ -67,8 +87,8 @@ class BaseballGame {
             print("\(s_count)스트라이크 \(b_count)볼")
             
             if s_count == 3 {
-                print("정답입니다")
-                break
+                print("정답입니다! \n")
+                return start()
             }
         }
     }
