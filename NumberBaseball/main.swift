@@ -44,6 +44,11 @@ class BaseballGame {
                 continue
             }
             
+            if input[0] == input[1] || input[0] == input[2] || input[1] == input[2] {
+                print("숫자가 중복되었습니다")
+                continue
+            }
+            
         
             for index in 0...2 {
                 if input[index] == answer[index] {
